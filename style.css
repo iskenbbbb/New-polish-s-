@@ -1,0 +1,216 @@
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  --neon-cyan: #00f5ff;
+  --neon-purple: #bf00ff;
+  --neon-pink: #ff00c8;
+  --neon-green: #00ff88;
+  --bg-dark: #070714;
+  --bg-card: #0e0e2a;
+  --bg-btn: #12122e;
+  --bg-btn-utility: #1a1a1a;
+  --text-main: #e8e8ff;
+  --text-dim: #6666aa;
+}
+
+body {
+  background-color: var(--bg-dark);
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Share Tech Mono', monospace;
+  overflow: hidden;
+  position: relative;
+}
+
+/* Background grid */
+.bg-grid {
+  position: fixed;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(0, 245, 255, 0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 245, 255, 0.04) 1px, transparent 1px);
+  background-size: 40px 40px;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Scanlines overlay */
+.scanlines {
+  position: fixed;
+  inset: 0;
+  background: repeating-linear-gradient(
+    0deg,
+    transparent,
+    transparent 2px,
+    rgba(0, 0, 0, 0.15) 2px,
+    rgba(0, 0, 0, 0.15) 4px
+  );
+  pointer-events: none;
+  z-index: 1;
+}
+
+.wrapper {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 24px;
+  padding: 24px 16px;
+  width: 100%;
+  max-width: 420px;
+}
+
+/* Header */
+.header {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  align-self: flex-start;
+}
+
+.header-icon {
+  font-size: 2rem;
+  color: var(--neon-cyan);
+  text-shadow: 0 0 12px var(--neon-cyan), 0 0 30px var(--neon-cyan);
+  animation: pulse-icon 3s ease-in-out infinite;
+}
+
+@keyframes pulse-icon {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.6; }
+}
+
+.title {
+  font-family: 'Orbitron', sans-serif;
+  font-weight: 900;
+  font-size: 1.8rem;
+  color: var(--neon-cyan);
+  text-shadow: 0 0 10px var(--neon-cyan), 0 0 30px var(--neon-cyan);
+  letter-spacing: 2px;
+}
+
+.subtitle {
+  font-size: 0.75rem;
+  color: var(--text-dim);
+  letter-spacing: 1px;
+  margin-top: 2px;
+}
+
+/* Calculator card */
+.calculator {
+  width: 100%;
+  background: var(--bg-card);
+  border-radius: 24px;
+  padding: 20px;
+  border: 1px solid rgba(0, 245, 255, 0.15);
+  box-shadow:
+    0 0 30px rgba(0, 245, 255, 0.08),
+    0 0 80px rgba(191, 0, 255, 0.06),
+    inset 0 0 30px rgba(0, 0, 0, 0.4);
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+/* Display */
+.display-wrapper {
+  background: rgba(0, 0, 0, 0.4);
+  border-radius: 14px;
+  border: 1px solid rgba(0, 245, 255, 0.1);
+  padding: 16px 20px 12px;
+  min-height: 90px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  justify-content: flex-end;
+  gap: 6px;
+  overflow: hidden;
+}
+
+.display-expression {
+  font-size: 0.8rem;
+  color: var(--text-dim);
+  letter-spacing: 1px;
+  min-height: 18px;
+  word-break: break-all;
+  text-align: right;
+}
+
+.display-result {
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 2.6rem;
+  color: var(--text-main);
+  letter-spacing: 2px;
+  text-shadow: 0 0 8px rgba(0, 245, 255, 0.4);
+  transition: all 0.15s ease;
+  word-break: break-all;
+  text-align: right;
+  line-height: 1;
+}
+
+.display-result.flash {
+  color: var(--neon-cyan);
+  text-shadow: 0 0 20px var(--neon-cyan);
+}
+
+/* Button grid */
+.btn-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+}
+
+/* Base button */
+.btn {
+  border: none;
+  border-radius: 14px;
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 1.2rem;
+  cursor: pointer;
+  padding: 0;
+  height: 68px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  transition: transform 0.1s ease, box-shadow 0.1s ease;
+  outline: none;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.btn:active {
+  transform: scale(0.93);
+}
+
+/* Number buttons */
+.btn-number {
+  background: var(--bg-btn);
+  color: var(--text-main);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+}
+
+.btn-number:hover {
+  border-color: rgba(0, 245, 255, 0.2);
+  box-shadow: 0 0 12px rgba(0, 245, 255, 0.1);
+}
+
+/* Utility buttons (AC, +/-, %) */
+.btn-utility {
+  background: #1c1c1c;
+  color: #c8a200;
+  border: 1px solid rgba(200, 162, 0, 0.15);
+  font-size: 1rem;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+}
+
+.btn-utility:hover {
+  border-color: rgba(200, 162, 0, 0.4);
+  box-shadow: 0 0 12px rgba(200, 162, 0, 0.15​​​​​​​​​​​​​​​​
