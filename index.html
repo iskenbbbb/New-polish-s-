@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>NeonCalc</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Share+Tech+Mono&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <div class="bg-grid"></div>
+  <div class="scanlines"></div>
+
+  <div class="wrapper">
+    <header class="header">
+      <div class="header-icon">⬡</div>
+      <div class="header-text">
+        <h1 class="title">NeonCalc</h1>
+        <p class="subtitle">Fast, precise, and electric arithmetic</p>
+      </div>
+    </header>
+
+    <div class="calculator">
+
+      <!-- Display -->
+      <div class="display-wrapper">
+        <div class="display-expression" id="expression"></div>
+        <div class="display-result" id="display">0</div>
+      </div>
+
+      <!-- Buttons -->
+      <div class="btn-grid">
+
+        <!-- Row 1: utility -->
+        <button class="btn btn-utility" data-action="clear">AC</button>
+        <button class="btn btn-utility" data-action="sign">+/−</button>
+        <button class="btn btn-utility" data-action="percent">%</button>
+        <button class="btn btn-operator" data-action="operator" data-value="/">÷</button>
+
+        <!-- Row 2 -->
+        <button class="btn btn-number" data-action="number" data-value="7">7</button>
+        <button class="btn btn-number" data-action="number" data-value="8">8</button>
+        <button class="btn btn-number" data-action="number" data-value="9">9</button>
+        <button class="btn btn-operator" data-action="operator" data-value="*">×</button>
+
+        <!-- Row 3 -->
+        <button class="btn btn-number" data-action="number" data-value="4">4</button>
+        <button class="btn btn-number" data-action="number" data-value="5">5</button>
+        <button class="btn btn-number" data-action="number" data-value="6">6</button>
+        <button class="btn btn-operator" data-action="operator" data-value="-">−</button>
+
+        <!-- Row 4 -->
+        <button class="btn btn-number" data-action="number" data-value="1">1</button>
+        <button class="btn btn-number" data-action="number" data-value="2">2</button>
+        <button class="btn btn-number" data-action="number" data-value="3">3</button>
+        <button class="btn btn-operator" data-action="operator" data-value="+">+</button>
+
+        <!-- Row 5 -->
+        <button class="btn btn-number btn-zero" data-action="number" data-value="0">0</button>
+        <button class="btn btn-number" data-action="decimal">.</button>
+        <button class="btn btn-equals" data-action="equals">=</button>
+
+      </div>
+    </div>
+
+    <footer class="footer">
+      <span>NeonCalc</span>
+      <span class="dot">·</span>
+      <span>Powered by Python</span>
+      <span class="dot">·</span>
+      <span>iskenbbbb.github.io</span>
+    </footer>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
